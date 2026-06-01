@@ -63,7 +63,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
+        <BrowserRouter basename="/systechnosoft">
           <ScrollToTop />
           <CalendlyDialogHost />
           <NetworkHealthCheckHost />
