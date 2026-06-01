@@ -2,32 +2,33 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main] # Runs every time you push to main
+    branches: [main]
+
+# 1. ADD THIS SECTION TO FIX ERROR 128
+permissions:
+  contents: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4 # No change needed here for now
 
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22 # Updated to a stable, non-deprecated version
 
       - name: Install and Build
         run: |
           npm install
           npm run build
         env:
-          # THIS IS THE KEY PART:
-          # It grabs the variable from GitHub and gives it to your build tool
-          VITE_API_URL: ${{ secrets.VITE_BACKEND_URL }} 
-          # Use ${{ secrets.NAME }} if you put it in the Secrets tab
+          VITE_API_URL: ${{ secrets.VITE_BACKEND_URL }}
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist # Change to 'build' if using Create React App
-          branch: gh-pages # The branch where the static files go
+          folder: dist # Ensure this matches your build folder (dist or build)
+          branch: gh-pages
