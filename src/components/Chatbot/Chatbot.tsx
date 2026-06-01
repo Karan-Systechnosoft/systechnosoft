@@ -14,7 +14,7 @@ import {
 import './Chatbot.css';
 
 const BACKEND_URL =
-  import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+  import.meta.env.VITE_BACKEND_URL || 'https://karansys-chatbot.hf.space';
 
 type ChatState = 'email' | 'chat' | 'meeting';
 
