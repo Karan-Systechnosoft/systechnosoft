@@ -802,7 +802,7 @@ function Chatbot(): JSX.Element {
             <X size={32} color='red' />
           ) : (
             <img
-              src="/logo.png"
+              src="logo.png"
               alt="Chatbot"
               className="chatbot-icon-img"
             />
